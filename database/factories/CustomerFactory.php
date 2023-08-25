@@ -18,9 +18,10 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->company(),
-            'code' => Str::random(10),
-            'contract_date' => fake()->date("Y-m-d")
+            'name'          => fake()->company(),
+            'code'          => Str::random(10),
+            'address'       => fake()->address(),
+            'contract_date' => fake()->date("Y-m-d"),
         ];
     }
 }

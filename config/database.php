@@ -58,6 +58,7 @@ return [
             'prefix_indexes' => true,
             'strict'         => true,
             'engine'         => null,
+            'maxConnection'  => env('DB_CONNECTION_LIMIT', 5),
             'options'        => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],

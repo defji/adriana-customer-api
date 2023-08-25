@@ -16,10 +16,21 @@ class StoreCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            "name"          => "required|string|max:127",
-            "code"          => "nullable|string|max:10",
-            "contract_date" => "required|date",
-        ];
+        if (request()->has('customers')) {
+            return [
+                'customers'                 => 'required|array',
+                'customers.*.name'          => 'required',
+                'customers.*.address'       => 'required',
+                'customers.*.code'          => 'nullable|string|max:10',
+                'customers.*.contract_date' => 'required|date',
+            ];
+        } else {
+            return [
+                "name"          => "required|string|max:127",
+                "code"          => "nullable|string|max:10",
+                'address'       => 'required',
+                "contract_date" => "required|date",
+            ];
+        }
     }
 }
