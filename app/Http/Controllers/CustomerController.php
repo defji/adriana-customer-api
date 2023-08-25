@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
+use App\Services\CustomerApiService;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->customerApiService = app(CustomerApiService::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Customer::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return $this->customerApiService->getAll();
     }
 
     /**
@@ -29,31 +29,16 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        return $this->customerApiService->create($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        return $this->customerApiService->update($request, $customer);
     }
 
     /**
