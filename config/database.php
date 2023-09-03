@@ -33,7 +33,8 @@ return [
     |
     */
 
-    'connections' => [
+    'connection_limit' => env('DB_CONNECTION_LIMIT', 5),
+    'connections'      => [
 
         'sqlite' => [
             'driver'                  => 'sqlite',

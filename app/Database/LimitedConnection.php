@@ -7,14 +7,13 @@ use Illuminate\Database\MySqlConnection;
 
 class LimitedConnection extends MySqlConnection
 {
-    protected $maxConnections;
 
     public function __construct($connection, $maxConnections)
     {
         parent::__construct($connection->getPdo(), $connection->getDatabaseName(), $connection->getTablePrefix(),
             $connection->getConfig());
 
-        $this->maxConnections = $maxConnections;
+        $this->maxConnections = config('database.connection_limit');
     }
 
     public function getPdo()
@@ -26,10 +25,4 @@ class LimitedConnection extends MySqlConnection
         return parent::getPdo();
     }
 
-    protected function activeConnectionCount()
-    {
-        // Ellenőrizzük a jelenleg aktív kapcsolatok számát
-        // Ezt saját logika szerint kell implementálni
-        // Például: return count($this->connections);
-    }
 }

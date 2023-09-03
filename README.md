@@ -7,9 +7,11 @@ git clone https://github.com/defji/adriana-customer-api
 cd adriana-customer-api
 composer install
 # set database credentials in .env file
+# set database connection limit in DB_CONNECTION_LIMIT 
 php artisan migrage:fresh --seed
 php artisan serve
-#open in browser: http://127.0.0.1:8000
+# check endbpoints below,  via postman (or other tool)
+
 ```
 
 ## Usage
