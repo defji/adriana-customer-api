@@ -6,9 +6,10 @@
 git clone https://github.com/defji/adriana-customer-api
 cd adriana-customer-api
 composer install
-# set database credentials
+# set database credentials in .env file
 php artisan migrage:fresh --seed
 php artisan serve
+#open in browser: http://127.0.0.1:8000
 ```
 
 ## Usage
